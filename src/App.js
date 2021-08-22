@@ -1,7 +1,22 @@
 import React from 'react';
 import './App.css';
 
+const url = "https://api.krazyminds.com/email-form";
+
 function KrazyMindsEmailForm({ apiKey }) {
+    fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      headers: {
+        'X-Api-Key': apiKey,
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({whereami: true, now: new Date() }) 
+    }).then(x => {
+      console.log("");
+    });
+
   return (
     <div className="container">
       <div className="row">
@@ -26,7 +41,6 @@ function Form({ apiKey }) {
     e.preventDefault();
     console.log("Prevent Default");
 
-    var url = "https://api.krazyminds.com/email-form";
 
     fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
