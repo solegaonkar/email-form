@@ -82,7 +82,7 @@ function Form({ apiKey }) {
           <div className="error-message">Error sending message. Check internet connection.</div>
           <div className="sent-message">Your message has been sent. Thank you!</div>
         </div>
-        <div className="text-center"><button type="submit">Send Message</button></div>
+        <div className="text-center"><button className="btn btn-primary" type="submit">Send Message</button></div>
       </form>
     );
   }
