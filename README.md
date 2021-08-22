@@ -6,11 +6,11 @@ Expects Bootstrap v 4 or 5 imported into the page.
 It is compiled and hosted on static.krazyminds.com.
 
 ### Include in the HTML
-- https://static.krazyminds.com/emailform.js 
-- https://static.krazyminds.com/emailform.css
+- https://static.krazyminds.com/emailform/script.js 
+- https://static.krazyminds.com/emailform/style.css
 
 ### Sample Implementation
-https://static.krazyminds.com/emailform.html 
+https://static.krazyminds.com/emailform/sample.html 
 
 ## AWS Requirements
 
