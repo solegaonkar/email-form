@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Email Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple reusable React Component that can be embedded in your website.
+Expects Bootstrap v 4 or 5 imported into the page.
 
-## Available Scripts
+It is compiled and hosted on static.krazyminds.com.
 
-In the project directory, you can run:
+### Include in the HTML
+https://static.krazyminds.com/emailform.js 
+https://static.krazyminds.com/emailform.css
 
-### `npm start`
+### Sample Implementation
+https://static.krazyminds.com/emailform.html 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## AWS Implementation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### DynamoDB
+This requires one record in the DynamoDB table - for each user subscribing to the form.
 
-### `npm test`
+```javascript
+{
+  "context": "USERID",
+  "email": "destination.email@gmail.com",
+  "id": "config",
+  "stats": {
+    "emailCount": 3
+  }
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This ID should be used in the div added to the HTML page.
 
-### `npm run build`
+### Environment Variables
+The Lambda Function Requires two environment variables:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```javascript
+const tableName = process.env.TABLE_NAME;
+const snsArn = process.env.TABLE_NAME;
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### API Gateway
+Simple API Gateway configuration - to invoke the Lambda with Proxy Integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deploy
+Follow these steps to build and deploy on your AWS account:
+- Build the React project for prod
+```npm run-script build --prod```
+- In the generated code, find build/index.html
+- It has some JS code within, and includes two JS files. Merge them all into one JS file
+- So we have a JS file and a CSS file. Add them to any HTML where you want the Email Form. 
+- The form will appear wherever it finds the 
+```html
+<div class="email-form">USERID</div>
+```
