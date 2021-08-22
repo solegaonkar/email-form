@@ -2,8 +2,6 @@ import React from 'react';
 import './App.css';
 
 function KrazyMindsEmailForm({ apiKey }) {
-
-
   return (
     <div className="container">
       <div className="row">
@@ -77,12 +75,7 @@ function Form({ apiKey }) {
           <label for="name">Message</label>
           <textarea className="form-control" name="message" rows="10" required onChange={(e) => setField("message", e.target.value)} ></textarea>
         </div>
-        <div className="my-3">
-          <div className="loading">Loading</div>
-          <div className="error-message">Error sending message. Check internet connection.</div>
-          <div className="sent-message">Your message has been sent. Thank you!</div>
-        </div>
-        <div className="text-center"><button className="btn btn-primary" type="submit">Send Message</button></div>
+        <div className="text-center"><button className="btn btn-sm btn-primary mt-4" type="submit">Send Message</button></div>
       </form>
     );
   }
