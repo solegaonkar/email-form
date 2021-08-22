@@ -44,8 +44,6 @@ function Form({ apiKey }) {
     }).catch(e => {
       setStatus("error");
     });
-
-
   };
 
   const setField = (f, v) => {

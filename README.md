@@ -6,13 +6,16 @@ Expects Bootstrap v 4 or 5 imported into the page.
 It is compiled and hosted on static.krazyminds.com.
 
 ### Include in the HTML
-https://static.krazyminds.com/emailform.js 
-https://static.krazyminds.com/emailform.css
+- https://static.krazyminds.com/emailform.js 
+- https://static.krazyminds.com/emailform.css
 
 ### Sample Implementation
 https://static.krazyminds.com/emailform.html 
 
-## AWS Implementation
+## AWS Requirements
+
+### Exit SES Sandbox
+To send outgoing mails without confirmation, you have to exit the SES Sandbox. Refer to this link: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html
 
 ### DynamoDB
 This requires one record in the DynamoDB table - for each user subscribing to the form.
